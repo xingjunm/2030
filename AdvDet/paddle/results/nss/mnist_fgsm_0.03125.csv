@@ -1,0 +1,4 @@
+type,nsamples,acc_suc,acc,tpr,fpr,tp,ap,fb,an,tprs,fprs,auc
+all,9753,0.9744693940326054,0.9989234081820978,0.9978468163641956,0.0,9732,9753,0,9753,"[np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(1.0)]","[np.float64(0.0), np.float64(0.00010253255408592229), np.float64(1.0), np.float64(1.0)]",1.0
+success,249,0,1.0,1.0,0.0,249,249,0,249,"[np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(1.0)]","[np.float64(0.0), np.float64(0.004016064257028112), np.float64(1.0), np.float64(1.0)]",1.0
+fail,9504,0,0.998895202020202,0.9977904040404041,0.0,9483,9504,0,9504,"[np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(1.0)]","[np.float64(0.0), np.float64(0.00010521885521885521), np.float64(1.0), np.float64(1.0)]",1.0

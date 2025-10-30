@@ -1,0 +1,19 @@
+2025-08-02 17:51:05,397 TensorFlow Version: 2.19.0
+2025-08-02 17:51:05,397 Python Version: 3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]
+2025-08-02 17:51:05,397 GPU List: ['/physical_device:GPU:0']
+2025-08-02 17:51:05,397 seed: 42
+2025-08-02 17:51:05,397 exp_name: BadNetCIFAR10_test
+2025-08-02 17:51:05,397 exp_path: exp/test_tf
+2025-08-02 17:51:05,397 exp_config: configs/test_tf
+2025-08-02 17:51:05,397 load_model: False
+2025-08-02 17:51:05,397 data_parallel: False
+2025-08-02 17:51:05,397 batch_size: 128
+2025-08-02 17:51:05,397 dataset: cifar_badnet
+2025-08-02 17:51:05,397 epochs: 5
+2025-08-02 17:51:05,397 lr: 0.1
+2025-08-02 17:51:05,397 model: resnet18
+2025-08-02 17:51:05,397 momentum: 0.9
+2025-08-02 17:51:05,397 poison_rate: 0.01
+2025-08-02 17:51:05,397 seed: 42
+2025-08-02 17:51:05,397 target_label: 0
+2025-08-02 17:51:05,398 weight_decay: 0.0001

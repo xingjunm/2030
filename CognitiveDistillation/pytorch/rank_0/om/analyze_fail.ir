@@ -1,0 +1,665 @@
+# ===============================================================================================
+# The following shows the last analyze fail log message.
+# ===============================================================================================
+
+----------------------------------------------------
+- Caught exception:
+----------------------------------------------------
+The types of arguments in Map must be consistent, but the types of arguments are inconsistent.
+There are 5 inputs of `map`, corresponding type info:
+In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825~829, 38~65
+                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,
+                                      ^
+.
+The type of the second argument in Map is: List[Tensor[Float32]].
+The type of the third argument in Map is: Tuple[Ref[Tensor[Float32]]].
+The type of the 4th argument in Map is: Tuple[Ref[Tensor[Float32]]].
+The type of the 5th argument in Map is: Tuple[Ref[Tensor[Float32]]].
+
+----------------------------------------------------
+- C++ Call Stack: (For framework developers)
+----------------------------------------------------
+mindspore/ccsrc/frontend/operator/composite/map.cc:237 Make
+
+----------------------------------------------------
+- The Traceback of Net Construct Code:
+----------------------------------------------------
+# 0 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:840~841, 8~64
+        if not self.use_offload:
+# 1 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:841, 12~64
+            gradients = self.gradients_centralization(gradients)
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 2 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:852, 15~98
+        return self._apply_adam(params, beta1_power, beta2_power, moment1, moment2, lr, gradients)
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 3 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:744~829, 8~65
+        if self.use_offload:
+# 4 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:753~829, 12~65
+            if self.use_dist_optimizer:
+# 5 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:792~829, 16~65
+                if self.is_group_lr:
+# 6 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:812~829, 20~65
+                    if self.use_lazy:
+# 7 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:818~829, 24~65
+                        if self.use_amsgrad:
+# 8 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825~829, 28~65
+                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,
+                            ^
+# 9 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:818~829, 24~65
+                        if self.use_amsgrad:
+# 10 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:812~829, 20~65
+                    if self.use_lazy:
+# 11 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:792~829, 16~65
+                if self.is_group_lr:
+# 12 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:753~829, 12~65
+            if self.use_dist_optimizer:
+# 13 In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825~829, 38~65
+                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,
+                                      ^
+
+# ===============================================================================================
+# The following shows the IR when the function graphs evaluation fails to help locate the problem.
+# You can search the last ------------------------> to the node which is evaluated failure.
+# Refer to https://www.mindspore.cn/search?inputValue=analyze_fail.ir to get more instructions.
+# ===============================================================================================
+
+# IR entry: @mindspore_nn_optim_adam_Adam_construct_5
+# Total subgraphs: 0
+
+# Attrs:
+skip_auto_parallel_compile: 1
+
+# Total params: 8
+# Params:
+%para1_gradients: <null>
+%para2_global_step: <Ref[Tensor[Int32]], (1), ref_key=global_step>  :  has_default
+%para3_beta1_power: <Ref[Tensor[Float32]], (), ref_key=beta1_power>  :  has_default
+%para4_beta2_power: <Ref[Tensor[Float32]], (), ref_key=beta2_power>  :  has_default
+%para5_x: <Ref[Tensor[Float32]], (3), ref_key=x>  :  has_default
+%para6_moment1.x: <Ref[Tensor[Float32]], (3), ref_key=moment1.x>  :  has_default
+%para7_moment2.x: <Ref[Tensor[Float32]], (3), ref_key=moment2.x>  :  has_default
+%para8_learning_rate: <Ref[Tensor[Float32]], (), ref_key=learning_rate>  :  has_default
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: mindspore_nn_optim_adam_Adam_construct_5 : 0x78aa810
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:833~852, 4~98/    @jit/
+subgraph @mindspore_nn_optim_adam_Adam_construct_5() {
+  %0(CNode_23) = resolve(NameSpace[Entry: 'mindspore.nn.optim.adam.Adam.construct'], mindspore.nn.optim.adam.Adam.construct, ([Tensor(shape=[3], dtype=Float32, value=<uninitialized>)]))
+      : (<External, NoShape>, <External, NoShape>, <Tuple[List[Tensor[Float32]]], TupleShape(ListShape[(3)])>) -> (<Func, NoShape>)
+      #scope: (Default)
+  %1(CNode_24) = MakeTuple(%para1_gradients)
+      : (<List[Tensor[Float32]], ListShape[(3)]>) -> (<Tuple[List[Tensor[Float32]]], TupleShape(ListShape[(3)])>)
+      #scope: (Default)
+  %2(CNode_25) = MakeTuple()
+      #scope: (Default)
+  %3(CNode_26) = MakeTuple()
+      #scope: (Default)
+  %4(CNode_27) = make_dict(%2, %3)
+      : (<Tuple[], TupleShape()>, <Tuple[], TupleShape()>) -> (<Dictionary[[],[]], NoShape>)
+      #scope: (Default)
+
+#------------------------> 0
+  %5(CNode_28) = DoUnpackCall(%0, %1, %4)
+      : (<Func, NoShape>, <Tuple[List[Tensor[Float32]]], TupleShape(ListShape[(3)])>, <Dictionary[[],[]], NoShape>) -> (<null>)
+      #scope: (Default)
+  Return(%5)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:840~841, 8~64/        if not self.use_offload:/
+}
+# Order:
+#   1: @mindspore_nn_optim_adam_Adam_construct_5:CNode_23{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Entry: 'mindspore.nn.optim.adam.Adam.construct', [2]: ValueNode<Symbol> mindspore.nn.optim.adam.Adam.construct, [3]: ValueNode<ValueTuple> ([Tensor(shape=[3], dtype=Float32, value=<uninitialized>)])}
+#   2: @mindspore_nn_optim_adam_Adam_construct_5:CNode_28{[0]: ValueNode<Primitive> DoUnpackCall, [1]: CNode_23, [2]: CNode_24, [3]: CNode_27}
+#   3: @mindspore_nn_optim_adam_Adam_construct_5:CNode_29{[0]: ValueNode<Primitive> Return, [1]: CNode_28}
+
+
+subgraph attr:
+core: 1
+subgraph instance: UnpackCall_6 : 0x78faf80
+
+subgraph @UnpackCall_6(%para0_Parameter_7, %para0_Parameter_8, %para0_Parameter_9) {
+  %0(CNode_30) = TupleGetItem(%para0_Parameter_8, I64(0))
+      : (<Tuple[List[Tensor[Float32]]], TupleShape(ListShape[(3)])>, <Int64, NoShape>) -> (<List[Tensor[Float32]], ListShape[(3)]>)
+      #scope: (Default)
+
+#------------------------> 1
+  %1(CNode_31) = Parameter_7(%0)
+      : (<List[Tensor[Float32]], ListShape[(3)]>) -> (<null>)
+      #scope: (Default)
+  Return(%1)
+      : (<null>)
+      #scope: (Default)
+}
+# Order:
+#   1: @UnpackCall_6:CNode_31{[0]: param_Parameter_7, [1]: CNode_30}
+#   2: @UnpackCall_6:CNode_32{[0]: ValueNode<Primitive> Return, [1]: CNode_31}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: mindspore_nn_optim_adam_Adam_construct_5 : 0x78dc010
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:833~852, 4~98/    @jit/
+subgraph @mindspore_nn_optim_adam_Adam_construct_5(%para0_gradients) {
+
+#------------------------> 2
+  %0(CNode_33) = call @✓mindspore_nn_optim_adam_Adam_construct_10()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:840~841, 8~64/        if not self.use_offload:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:840~841, 8~64/        if not self.use_offload:/
+}
+# Order:
+#   1: @mindspore_nn_optim_adam_Adam_construct_5:params{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> _parameters}
+#   2: @mindspore_nn_optim_adam_Adam_construct_5:moment1{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> moment1}
+#   3: @mindspore_nn_optim_adam_Adam_construct_5:moment2{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> moment2}
+#   4: @mindspore_nn_optim_adam_Adam_construct_5:CNode_34{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> flatten_gradients}
+#   5: @mindspore_nn_optim_adam_Adam_construct_5:CNode_35{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   7: @mindspore_nn_optim_adam_Adam_construct_5:gradients{[0]: CNode_34, [1]: param_gradients}
+#   8: @mindspore_nn_optim_adam_Adam_construct_5:CNode_36{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> decay_weight}
+#   9: @mindspore_nn_optim_adam_Adam_construct_5:CNode_37{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  11: @mindspore_nn_optim_adam_Adam_construct_5:gradients{[0]: CNode_36, [1]: gradients}
+#  12: @mindspore_nn_optim_adam_Adam_construct_5:CNode_33{[0]: ValueNode<FuncGraph> ✓mindspore_nn_optim_adam_Adam_construct_10}
+#  13: @mindspore_nn_optim_adam_Adam_construct_5:CNode_29{[0]: ValueNode<Primitive> Return, [1]: CNode_33}
+#  14: @mindspore_nn_optim_adam_Adam_construct_5:CNode_38{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> gradients_centralization}
+#  15: @mindspore_nn_optim_adam_Adam_construct_5:CNode_39{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> scale_grad}
+#  16: @mindspore_nn_optim_adam_Adam_construct_5:CNode_40{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> _grad_sparse_indices_deduplicate}
+#  17: @mindspore_nn_optim_adam_Adam_construct_5:CNode_41{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> get_lr}
+#  18: @mindspore_nn_optim_adam_Adam_construct_5:CNode_42{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> global_step}
+#  19: @mindspore_nn_optim_adam_Adam_construct_5:CNode_43{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> global_step_increase_tensor}
+#  20: @mindspore_nn_optim_adam_Adam_construct_5:CNode_44{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> beta1_power}
+#  21: @mindspore_nn_optim_adam_Adam_construct_5:CNode_45{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> beta1}
+#  22: @mindspore_nn_optim_adam_Adam_construct_5:CNode_46{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> beta2_power}
+#  23: @mindspore_nn_optim_adam_Adam_construct_5:CNode_47{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> beta2}
+#  24: @mindspore_nn_optim_adam_Adam_construct_5:CNode_48{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> _apply_adam}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: ✓mindspore_nn_optim_adam_Adam_construct_10 : 0x78e7c40
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:833~852, 4~98/    @jit/
+subgraph @✓mindspore_nn_optim_adam_Adam_construct_10 parent: [subgraph @mindspore_nn_optim_adam_Adam_construct_5]() {
+
+#------------------------> 3
+  %0(CNode_49) = call @↓mindspore_nn_optim_adam_Adam_construct_11()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:841, 12~64/            gradients = self.gradients_centralization(gradients)/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:841, 12~64/            gradients = self.gradients_centralization(gradients)/
+}
+# Order:
+#   1: @✓mindspore_nn_optim_adam_Adam_construct_10:CNode_50{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   3: @✓mindspore_nn_optim_adam_Adam_construct_10:gradients{[0]: CNode_38, [1]: gradients}
+#   4: @✓mindspore_nn_optim_adam_Adam_construct_10:CNode_49{[0]: ValueNode<FuncGraph> ↓mindspore_nn_optim_adam_Adam_construct_11}
+#   5: @✓mindspore_nn_optim_adam_Adam_construct_10:CNode_51{[0]: ValueNode<Primitive> Return, [1]: CNode_49}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: ↓mindspore_nn_optim_adam_Adam_construct_11 : 0x78e8b70
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:833~852, 4~98/    @jit/
+subgraph @↓mindspore_nn_optim_adam_Adam_construct_11 parent: [subgraph @✓mindspore_nn_optim_adam_Adam_construct_10]() {
+  %0(CNode_52) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], assignadd)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:845, 8~22/        self.assignadd(self.global_step, self.global_step_increase_tensor)/
+  %1(CNode_42) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], global_step)
+      : (<External, NoShape>, <External, NoShape>) -> (<Ref[Tensor[Int32]], (1)>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:845, 23~39/        self.assignadd(self.global_step, self.global_step_increase_tensor)/
+  %2(CNode_43) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], global_step_increase_tensor)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tensor[Int32], (1)>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:845, 41~73/        self.assignadd(self.global_step, self.global_step_increase_tensor)/
+  %3(CNode_53) = %0(%1, %2)
+      : (<Ref[Tensor[Int32]], (1)>, <Tensor[Int32], (1)>) -> (<Ref[Tensor[Int32]], (1)>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:845, 8~74/        self.assignadd(self.global_step, self.global_step_increase_tensor)/
+  %4(CNode_44) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], beta1_power)
+      : (<External, NoShape>, <External, NoShape>) -> (<Ref[Tensor[Float32]], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:847, 22~38/        beta1_power = self.beta1_power * self.beta1/
+  %5(CNode_54) = resolve(NameSpace[Ast: 'Namespace:mindspore._extends.parse.trope'], mul)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:847, 22~51/        beta1_power = self.beta1_power * self.beta1/
+  %6(CNode_45) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], beta1)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tensor[Float32], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:847, 41~51/        beta1_power = self.beta1_power * self.beta1/
+  %7(beta1_power) = %5(%4, %6)
+      : (<Ref[Tensor[Float32]], ()>, <Tensor[Float32], ()>) -> (<Tensor[Float32], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:847, 22~51/        beta1_power = self.beta1_power * self.beta1/
+  %8(CNode_55) = call @assign_56(%4, %7)
+      : (<Ref[Tensor[Float32]], ()>, <Tensor[Float32], ()>) -> (<Ref[Tensor[Float32]], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:848, 8~38/        self.beta1_power = beta1_power/
+  %9(CNode_46) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], beta2_power)
+      : (<External, NoShape>, <External, NoShape>) -> (<Ref[Tensor[Float32]], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:849, 22~38/        beta2_power = self.beta2_power * self.beta2/
+  %10(CNode_57) = resolve(NameSpace[Ast: 'Namespace:mindspore._extends.parse.trope'], mul)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:849, 22~51/        beta2_power = self.beta2_power * self.beta2/
+  %11(CNode_47) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], beta2)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tensor[Float32], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:849, 41~51/        beta2_power = self.beta2_power * self.beta2/
+  %12(beta2_power) = %10(%9, %11)
+      : (<Ref[Tensor[Float32]], ()>, <Tensor[Float32], ()>) -> (<Tensor[Float32], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:849, 22~51/        beta2_power = self.beta2_power * self.beta2/
+  %13(CNode_58) = call @assign_56(%9, %12)
+      : (<Ref[Tensor[Float32]], ()>, <Tensor[Float32], ()>) -> (<Ref[Tensor[Float32]], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:850, 8~38/        self.beta2_power = beta2_power/
+  %14(CNode_59) = MakeTuple(%3, %8, %13)
+      : (<Ref[Tensor[Int32]], (1)>, <Ref[Tensor[Float32]], ()>, <Ref[Tensor[Float32]], ()>) -> (<Tuple[Ref[Tensor[Int32]],Ref[Tensor[Float32]]*2], TupleShape((1), (), ())>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:833~852, 4~98/    @jit/
+  %15(CNode_60) = StopGradient(%14)
+      : (<Tuple[Ref[Tensor[Int32]],Ref[Tensor[Float32]]*2], TupleShape((1), (), ())>) -> (<Tuple[Ref[Tensor[Int32]],Ref[Tensor[Float32]]*2], TupleShape((1), (), ())>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:833~852, 4~98/    @jit/
+  %16(CNode_48) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], _apply_adam)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:852, 15~31/        return self._apply_adam(params, beta1_power, beta2_power, moment1, moment2, lr, gradients)/
+  %17(params) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], _parameters)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tuple[Ref[Tensor[Float32]]], TupleShape((3))>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:835, 17~33/        params = self._parameters/
+  %18(moment1) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], moment1)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tuple[Ref[Tensor[Float32]]], TupleShape((3))>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:836, 18~30/        moment1 = self.moment1/
+  %19(moment2) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], moment2)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tuple[Ref[Tensor[Float32]]], TupleShape((3))>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:837, 18~30/        moment2 = self.moment2/
+  %20(CNode_41) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], get_lr)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:844, 13~24/        lr = self.get_lr()/
+  %21(lr) = %20()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:844, 13~26/        lr = self.get_lr()/
+  %22(CNode_40) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], _grad_sparse_indices_deduplicate)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:843, 20~57/        gradients = self._grad_sparse_indices_deduplicate(gradients)/
+  %23(CNode_39) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], scale_grad)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:842, 20~35/        gradients = self.scale_grad(gradients)/
+  %24(CNode_38) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], gradients_centralization)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:841, 24~53/            gradients = self.gradients_centralization(gradients)/
+  %25(CNode_36) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], decay_weight)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:839, 20~37/        gradients = self.decay_weight(gradients)/
+  %26(CNode_34) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], flatten_gradients)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:838, 20~42/        gradients = self.flatten_gradients(gradients)/
+  %27(gradients) = %26(%para0_gradients)
+      : (<List[Tensor[Float32]], ListShape[(3)]>) -> (<List[Tensor[Float32]], ListShape[(3)]>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:838, 20~53/        gradients = self.flatten_gradients(gradients)/
+  %28(gradients) = %25(%27)
+      : (<List[Tensor[Float32]], ListShape[(3)]>) -> (<List[Tensor[Float32]], ListShape[(3)]>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:839, 20~48/        gradients = self.decay_weight(gradients)/
+  %29(gradients) = %24(%28)
+      : (<List[Tensor[Float32]], ListShape[(3)]>) -> (<List[Tensor[Float32]], ListShape[(3)]>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:841, 24~64/            gradients = self.gradients_centralization(gradients)/
+  %30(gradients) = %23(%29)
+      : (<List[Tensor[Float32]], ListShape[(3)]>) -> (<List[Tensor[Float32]], ListShape[(3)]>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:842, 20~46/        gradients = self.scale_grad(gradients)/
+  %31(gradients) = %22(%30)
+      : (<List[Tensor[Float32]], ListShape[(3)]>) -> (<List[Tensor[Float32]], ListShape[(3)]>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:843, 20~68/        gradients = self._grad_sparse_indices_deduplicate(gradients)/
+
+#------------------------> 4
+  %32(CNode_61) = %16(%17, %7, %12, %18, %19, %21, %31)
+      : (<Tuple[Ref[Tensor[Float32]]], TupleShape((3))>, <Tensor[Float32], ()>, <Tensor[Float32], ()>, <Tuple[Ref[Tensor[Float32]]], TupleShape((3))>, <Tuple[Ref[Tensor[Float32]]], TupleShape((3))>, <Ref[Tensor[Float32]], ()>, <List[Tensor[Float32]], ListShape[(3)]>) -> (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:852, 15~98/        return self._apply_adam(params, beta1_power, beta2_power, moment1, moment2, lr, gradients)/
+  %33(CNode_62) = Depend(%32, %15) primitive_attrs: {side_effect_propagate: I64(1)} cnode_attrs: {topo_sort_rhs_first: Bool(1)}
+      : (<null>, <Tuple[Ref[Tensor[Int32]],Ref[Tensor[Float32]]*2], TupleShape((1), (), ())>) -> (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:852, 15~98/        return self._apply_adam(params, beta1_power, beta2_power, moment1, moment2, lr, gradients)/
+  Return(%33)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:852, 8~98/        return self._apply_adam(params, beta1_power, beta2_power, moment1, moment2, lr, gradients)/
+}
+# Order:
+#   1: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_63{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   3: @↓mindspore_nn_optim_adam_Adam_construct_11:gradients{[0]: CNode_39, [1]: gradients}
+#   4: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_64{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   6: @↓mindspore_nn_optim_adam_Adam_construct_11:gradients{[0]: CNode_40, [1]: gradients}
+#   7: @↓mindspore_nn_optim_adam_Adam_construct_11:lr{[0]: CNode_41}
+#   8: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_52{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> assignadd}
+#   9: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_65{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  11: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_53{[0]: CNode_52, [1]: CNode_42, [2]: CNode_43}
+#  12: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_54{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Ast: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> mul}
+#  13: @↓mindspore_nn_optim_adam_Adam_construct_11:beta1_power{[0]: CNode_54, [1]: CNode_44, [2]: CNode_45}
+#  14: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_55{[0]: ValueNode<FuncGraph> assign_56, [1]: CNode_44, [2]: beta1_power}
+#  15: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_57{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Ast: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> mul}
+#  16: @↓mindspore_nn_optim_adam_Adam_construct_11:beta2_power{[0]: CNode_57, [1]: CNode_46, [2]: CNode_47}
+#  17: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_58{[0]: ValueNode<FuncGraph> assign_56, [1]: CNode_46, [2]: beta2_power}
+#  18: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_66{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  20: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_61{[0]: CNode_48, [1]: params, [2]: beta1_power, [3]: beta2_power, [4]: moment1, [5]: moment2, [6]: lr, [7]: gradients}
+#  22: @↓mindspore_nn_optim_adam_Adam_construct_11:CNode_67{[0]: ValueNode<Primitive> Return, [1]: CNode_62}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: _apply_adam_12 : 0x79772e0
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @_apply_adam_12(%para0_params, %para0_beta1_power, %para0_beta2_power, %para0_moment1, %para0_moment2, %para0_lr, %para0_gradients) {
+
+#------------------------> 5
+  %0(CNode_68) = call @✗_apply_adam_13()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:744~829, 8~65/        if self.use_offload:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:744~829, 8~65/        if self.use_offload:/
+}
+# Order:
+#   1: @_apply_adam_12:CNode_68{[0]: ValueNode<FuncGraph> ✗_apply_adam_13}
+#   2: @_apply_adam_12:CNode_69{[0]: ValueNode<Primitive> Return, [1]: CNode_68}
+#   3: @_apply_adam_12:CNode_70{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> map_}
+#   4: @_apply_adam_12:CNode_71{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:mindspore.nn.optim.adam', [2]: ValueNode<Symbol> F}
+#   5: @_apply_adam_12:CNode_72{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:mindspore.nn.optim.adam', [2]: ValueNode<Symbol> _adam_opt}
+#   6: @_apply_adam_12:CNode_73{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> beta1}
+#   7: @_apply_adam_12:CNode_74{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> beta2}
+#   8: @_apply_adam_12:CNode_75{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> eps}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: ✗_apply_adam_13 : 0x79747e0
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @✗_apply_adam_13 parent: [subgraph @_apply_adam_12]() {
+
+#------------------------> 6
+  %0(CNode_76) = call @2✗_apply_adam_14()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:753~829, 12~65/            if self.use_dist_optimizer:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:753~829, 12~65/            if self.use_dist_optimizer:/
+}
+# Order:
+#   1: @✗_apply_adam_13:CNode_76{[0]: ValueNode<FuncGraph> 2✗_apply_adam_14}
+#   2: @✗_apply_adam_13:CNode_77{[0]: ValueNode<Primitive> Return, [1]: CNode_76}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: 2✗_apply_adam_14 : 0x7972d80
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @2✗_apply_adam_14 parent: [subgraph @_apply_adam_12]() {
+
+#------------------------> 7
+  %0(CNode_78) = call @3✗_apply_adam_15()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:792~829, 16~65/                if self.is_group_lr:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:792~829, 16~65/                if self.is_group_lr:/
+}
+# Order:
+#   1: @2✗_apply_adam_14:CNode_78{[0]: ValueNode<FuncGraph> 3✗_apply_adam_15}
+#   2: @2✗_apply_adam_14:CNode_79{[0]: ValueNode<Primitive> Return, [1]: CNode_78}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: 3✗_apply_adam_15 : 0x7980f80
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @3✗_apply_adam_15 parent: [subgraph @_apply_adam_12]() {
+
+#------------------------> 8
+  %0(CNode_80) = call @4✗_apply_adam_16()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:812~829, 20~65/                    if self.use_lazy:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:812~829, 20~65/                    if self.use_lazy:/
+}
+# Order:
+#   1: @3✗_apply_adam_15:CNode_80{[0]: ValueNode<FuncGraph> 4✗_apply_adam_16}
+#   2: @3✗_apply_adam_15:CNode_81{[0]: ValueNode<Primitive> Return, [1]: CNode_80}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: 4✗_apply_adam_16 : 0x7987340
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @4✗_apply_adam_16 parent: [subgraph @_apply_adam_12]() {
+
+#------------------------> 9
+  %0(CNode_82) = call @5✗_apply_adam_17()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:818~829, 24~65/                        if self.use_amsgrad:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:818~829, 24~65/                        if self.use_amsgrad:/
+}
+# Order:
+#   1: @4✗_apply_adam_16:CNode_82{[0]: ValueNode<FuncGraph> 5✗_apply_adam_17}
+#   2: @4✗_apply_adam_16:CNode_83{[0]: ValueNode<Primitive> Return, [1]: CNode_82}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: 5✗_apply_adam_17 : 0x798a160
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @5✗_apply_adam_17 parent: [subgraph @_apply_adam_12]() {
+
+#------------------------> 10
+  %0(CNode_84) = call @↓4✗_apply_adam_18()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825~829, 28~65/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825~829, 28~65/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+}
+# Order:
+#   1: @5✗_apply_adam_17:CNode_85{[0]: ValueNode<Primitive> getattr, [1]: CNode_71, [2]: ValueNode<StringImm> partial}
+#   2: @5✗_apply_adam_17:CNode_86{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> opt}
+#   3: @5✗_apply_adam_17:CNode_87{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> sparse_opt}
+#   4: @5✗_apply_adam_17:CNode_88{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> use_locking}
+#   5: @5✗_apply_adam_17:CNode_89{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> use_nesterov}
+#   6: @5✗_apply_adam_17:CNode_90{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>', [2]: ValueNode<Symbol> _is_device}
+#   7: @5✗_apply_adam_17:CNode_91{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   9: @5✗_apply_adam_17:CNode_92{[0]: CNode_85, [1]: CNode_72, [2]: CNode_86, [3]: CNode_87, [4]: CNode_88, [5]: CNode_89, [6]: CNode_90, [7]: param_beta1_power, [8]: param_beta2_power, [9]: CNode_73, [10]: CNode_74, [11]: CNode_75, [12]: param_lr}
+#  10: @5✗_apply_adam_17:CNode_93{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  12: @5✗_apply_adam_17:success{[0]: CNode_70, [1]: CNode_92, [2]: param_gradients, [3]: param_params, [4]: param_moment1, [5]: param_moment2}
+#  13: @5✗_apply_adam_17:CNode_84{[0]: ValueNode<FuncGraph> ↓4✗_apply_adam_18}
+#  14: @5✗_apply_adam_17:CNode_94{[0]: ValueNode<Primitive> Return, [1]: CNode_84}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: ↓4✗_apply_adam_18 : 0x798b510
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @↓4✗_apply_adam_18 parent: [subgraph @5✗_apply_adam_17]() {
+
+#------------------------> 11
+  %0(CNode_95) = call @↓3✗_apply_adam_19()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:818~829, 24~65/                        if self.use_amsgrad:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:818~829, 24~65/                        if self.use_amsgrad:/
+}
+# Order:
+#   1: @↓4✗_apply_adam_18:CNode_95{[0]: ValueNode<FuncGraph> ↓3✗_apply_adam_19}
+#   2: @↓4✗_apply_adam_18:CNode_96{[0]: ValueNode<Primitive> Return, [1]: CNode_95}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: ↓3✗_apply_adam_19 : 0x7988920
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @↓3✗_apply_adam_19 parent: [subgraph @5✗_apply_adam_17]() {
+
+#------------------------> 12
+  %0(CNode_97) = call @↓2✗_apply_adam_20()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:812~829, 20~65/                    if self.use_lazy:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:812~829, 20~65/                    if self.use_lazy:/
+}
+# Order:
+#   1: @↓3✗_apply_adam_19:CNode_97{[0]: ValueNode<FuncGraph> ↓2✗_apply_adam_20}
+#   2: @↓3✗_apply_adam_19:CNode_98{[0]: ValueNode<Primitive> Return, [1]: CNode_97}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: ↓2✗_apply_adam_20 : 0x79826c0
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @↓2✗_apply_adam_20 parent: [subgraph @5✗_apply_adam_17]() {
+
+#------------------------> 13
+  %0(CNode_99) = call @↓✗_apply_adam_21()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:792~829, 16~65/                if self.is_group_lr:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:792~829, 16~65/                if self.is_group_lr:/
+}
+# Order:
+#   1: @↓2✗_apply_adam_20:CNode_99{[0]: ValueNode<FuncGraph> ↓✗_apply_adam_21}
+#   2: @↓2✗_apply_adam_20:CNode_100{[0]: ValueNode<Primitive> Return, [1]: CNode_99}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: ↓✗_apply_adam_21 : 0x7980520
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @↓✗_apply_adam_21 parent: [subgraph @5✗_apply_adam_17]() {
+
+#------------------------> 14
+  %0(CNode_101) = call @↓_apply_adam_22()
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:753~829, 12~65/            if self.use_dist_optimizer:/
+  Return(%0)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:753~829, 12~65/            if self.use_dist_optimizer:/
+}
+# Order:
+#   1: @↓✗_apply_adam_21:CNode_101{[0]: ValueNode<FuncGraph> ↓_apply_adam_22}
+#   2: @↓✗_apply_adam_21:CNode_102{[0]: ValueNode<Primitive> Return, [1]: CNode_101}
+
+
+subgraph attr:
+skip_auto_parallel_compile: 1
+subgraph instance: ↓_apply_adam_22 : 0x797cdf0
+# In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:742~831, 4~22/    def _apply_adam(self, params, beta1_power, beta2_power, moment1, moment2, lr, gradients):/
+subgraph @↓_apply_adam_22 parent: [subgraph @5✗_apply_adam_17]() {
+  %0(CNode_70) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], map_)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825, 38~47/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+  %1(CNode_71) = resolve(NameSpace[SymbolStr: 'Namespace:mindspore.nn.optim.adam'], F)
+      : (<External, NoShape>, <External, NoShape>) -> (<External, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825, 48~49/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+  %2(CNode_85) = getattr(%1, "partial")
+      : (<External, NoShape>, <String, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825, 48~57/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+  %3(CNode_72) = resolve(NameSpace[SymbolStr: 'Namespace:mindspore.nn.optim.adam'], _adam_opt)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825, 58~67/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+  %4(CNode_86) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], opt)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825, 69~77/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+  %5(CNode_87) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], sparse_opt)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825, 79~94/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+  %6(CNode_88) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], use_locking)
+      : (<External, NoShape>, <External, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:826, 58~74/                                                          self.use_locking, self.use_nesterov,/
+  %7(CNode_89) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], use_nesterov)
+      : (<External, NoShape>, <External, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:826, 76~93/                                                          self.use_locking, self.use_nesterov,/
+  %8(CNode_90) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], _is_device)
+      : (<External, NoShape>, <External, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:827, 58~73/                                                          self._is_device, beta1_power, beta2_power,/
+  %9(CNode_73) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], beta1)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tensor[Float32], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:828, 58~68/                                                          self.beta1, self.beta2, self.eps, lr), gradients, params,/
+  %10(CNode_74) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], beta2)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tensor[Float32], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:828, 70~80/                                                          self.beta1, self.beta2, self.eps, lr), gradients, params,/
+  %11(CNode_75) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.optim.adam..<Adam::140427922231504>'], eps)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tensor[Float32], ()>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:828, 82~90/                                                          self.beta1, self.beta2, self.eps, lr), gradients, params,/
+  %12(CNode_92) = %2(%3, %4, %5, %6, %7, %8, $(@_apply_adam_12:para0_beta1_power), $(@_apply_adam_12:para0_beta2_power), %9, %10, %11, $(@_apply_adam_12:para0_lr))
+      : (<Func, NoShape>, <Func, NoShape>, <Func, NoShape>, <Bool, NoShape>, <Bool, NoShape>, <Bool, NoShape>, <Tensor[Float32], ()>, <Tensor[Float32], ()>, <Tensor[Float32], ()>, <Tensor[Float32], ()>, <Tensor[Float32], ()>, <Ref[Tensor[Float32]], ()>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825~828, 48~95/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+
+#------------------------> 15
+  %13(success) = %0(%12, $(@_apply_adam_12:para0_gradients), $(@_apply_adam_12:para0_params), $(@_apply_adam_12:para0_moment1), $(@_apply_adam_12:para0_moment2))
+      : (<Func, NoShape>, <List[Tensor[Float32]], ListShape[(3)]>, <Tuple[Ref[Tensor[Float32]]], TupleShape((3))>, <Tuple[Ref[Tensor[Float32]]], TupleShape((3))>, <Tuple[Ref[Tensor[Float32]]], TupleShape((3))>) -> (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:825~829, 38~65/                            success = self.map_(F.partial(_adam_opt, self.opt, self.sparse_opt,/
+  Return(%13)
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/CognitiveDistillation/lib/python3.10/site-packages/mindspore/nn/optim/adam.py:831, 8~22/        return success/
+}
+# Order:
+#   1: @↓_apply_adam_22:CNode_103{[0]: ValueNode<Primitive> Return, [1]: success}
+
+
+# ===============================================================================================
+# The total of function graphs in evaluation stack: 16/18 (Ignored 2 internal frames).
+# ===============================================================================================
+
+
+# ===============================================================================================
+# The rest function graphs are the following:
+# ===============================================================================================
+No more function graphs.
+

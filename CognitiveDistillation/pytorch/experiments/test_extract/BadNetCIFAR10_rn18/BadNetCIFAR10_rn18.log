@@ -1,0 +1,72 @@
+2025-08-03 11:30:05,455 PyTorch Version: 2.7.1+cu126
+2025-08-03 11:30:05,466 GPU List: ['NVIDIA A800-SXM4-80GB']
+2025-08-03 11:30:05,466 seed: 0
+2025-08-03 11:30:05,466 exp_name: BadNetCIFAR10_rn18
+2025-08-03 11:30:05,466 exp_path: experiments/test_extract
+2025-08-03 11:30:05,466 exp_config: configs/backdoor_exp/cifar/poison_rate_0.010
+2025-08-03 11:30:05,467 data_parallel: False
+2025-08-03 11:30:05,467 method: CD
+2025-08-03 11:30:05,467 p: 1
+2025-08-03 11:30:05,467 gamma: 0.01
+2025-08-03 11:30:05,467 beta: 1.0
+2025-08-03 11:30:05,467 num_steps: 100
+2025-08-03 11:30:05,467 step_size: 0.1
+2025-08-03 11:30:05,467 mask_channel: 1
+2025-08-03 11:30:05,467 norm_only: False
+2025-08-03 11:30:05,467 num_classes: 10
+2025-08-03 11:30:05,467 epochs: 60
+2025-08-03 11:30:05,467 grad_clip: -1
+2025-08-03 11:30:05,467 log_frequency: 50
+2025-08-03 11:30:05,467 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-03 11:30:05,467 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-03 11:30:05,467 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-03 11:30:05,467 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-03 11:30:05,467 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': '/data/projects/punim0784/datasets/', 'test_path': '/data/projects/punim0784/datasets/'}
+2025-08-03 11:30:22,954 PyTorch Version: 2.7.1+cu126
+2025-08-03 11:30:22,970 GPU List: ['NVIDIA A800-SXM4-80GB']
+2025-08-03 11:30:22,970 seed: 0
+2025-08-03 11:30:22,970 exp_name: BadNetCIFAR10_rn18
+2025-08-03 11:30:22,970 exp_path: experiments/test_extract
+2025-08-03 11:30:22,971 exp_config: configs/backdoor_exp/cifar/poison_rate_0.010
+2025-08-03 11:30:22,971 data_parallel: False
+2025-08-03 11:30:22,971 method: CD
+2025-08-03 11:30:22,971 p: 1
+2025-08-03 11:30:22,971 gamma: 0.01
+2025-08-03 11:30:22,971 beta: 1.0
+2025-08-03 11:30:22,971 num_steps: 100
+2025-08-03 11:30:22,971 step_size: 0.1
+2025-08-03 11:30:22,971 mask_channel: 1
+2025-08-03 11:30:22,971 norm_only: False
+2025-08-03 11:30:22,971 num_classes: 10
+2025-08-03 11:30:22,971 epochs: 60
+2025-08-03 11:30:22,971 grad_clip: -1
+2025-08-03 11:30:22,971 log_frequency: 50
+2025-08-03 11:30:22,971 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-03 11:30:22,971 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-03 11:30:22,971 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-03 11:30:22,971 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-03 11:30:22,971 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': '/data/projects/punim0784/datasets/', 'test_path': '/data/projects/punim0784/datasets/'}
+2025-08-03 11:30:51,354 PyTorch Version: 2.7.1+cu126
+2025-08-03 11:30:51,365 GPU List: ['NVIDIA A800-SXM4-80GB']
+2025-08-03 11:30:51,365 seed: 0
+2025-08-03 11:30:51,365 exp_name: BadNetCIFAR10_rn18
+2025-08-03 11:30:51,365 exp_path: experiments/test_extract
+2025-08-03 11:30:51,366 exp_config: configs/backdoor_exp/cifar/poison_rate_0.010
+2025-08-03 11:30:51,366 data_parallel: False
+2025-08-03 11:30:51,366 method: CD
+2025-08-03 11:30:51,366 p: 1
+2025-08-03 11:30:51,366 gamma: 0.01
+2025-08-03 11:30:51,366 beta: 1.0
+2025-08-03 11:30:51,366 num_steps: 100
+2025-08-03 11:30:51,366 step_size: 0.1
+2025-08-03 11:30:51,366 mask_channel: 1
+2025-08-03 11:30:51,366 norm_only: False
+2025-08-03 11:30:51,366 num_classes: 10
+2025-08-03 11:30:51,366 epochs: 60
+2025-08-03 11:30:51,366 grad_clip: -1
+2025-08-03 11:30:51,366 log_frequency: 50
+2025-08-03 11:30:51,366 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-03 11:30:51,366 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-03 11:30:51,366 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-03 11:30:51,366 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-03 11:30:51,366 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': '/data/projects/punim0784/datasets/', 'test_path': '/data/projects/punim0784/datasets/'}

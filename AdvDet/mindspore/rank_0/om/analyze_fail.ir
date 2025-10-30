@@ -1,0 +1,401 @@
+# ===============================================================================================
+# The following shows the last analyze fail log message.
+# ===============================================================================================
+
+----------------------------------------------------
+- Caught exception:
+----------------------------------------------------
+For 'Sub', input1.shape and input2.shape need to broadcast. The value of input1.shape[6] or input2.shape[6] must be 1 or -1 when they are not the same, but got input1.shape = [256, 1, 54, 54] and input2.shape = [256, 1, 28, 28]
+
+----------------------------------------------------
+- C++ Call Stack: (For framework developers)
+----------------------------------------------------
+mindspore/ops/ops_utils/op_utils.cc:87 CalBroadCastShape
+
+----------------------------------------------------
+- The Traceback of Net Construct Code:
+----------------------------------------------------
+# 0 In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:597, 31~56
+                        return grad_(fn, weights)(*args)
+                               ^~~~~~~~~~~~~~~~~~~~~~~~~
+# 1 In file /root/taiadv/taiadv/detection_mindspore/magnet/defensive_models.py:49, 19~48
+            loss = criterion(output, data_train)
+                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 2 In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 21~36
+        x = F.square(logits - labels)
+                     ^~~~~~~~~~~~~~~
+
+# ===============================================================================================
+# The following shows the IR when the function graphs evaluation fails to help locate the problem.
+# You can search the last ------------------------> to the node which is evaluated failure.
+# Refer to https://www.mindspore.cn/search?inputValue=analyze_fail.ir to get more instructions.
+# ===============================================================================================
+
+# IR entry: @after_grad_33
+# Total subgraphs: 0
+
+# Total params: 7
+# Params:
+%para1_args0: <null>
+%para2_args1: <null>
+%para3_0.weight: <Ref[Tensor[Float32]], (3, 1, 3, 3), ref_key=0.weight>  :  has_default
+%para4_3.weight: <Ref[Tensor[Float32]], (3, 3, 3, 3), ref_key=3.weight>  :  has_default
+%para5_5.weight: <Ref[Tensor[Float32]], (3, 3, 3, 3), ref_key=5.weight>  :  has_default
+%para6_8.weight: <Ref[Tensor[Float32]], (3, 3, 3, 3), ref_key=8.weight>  :  has_default
+%para7_10.weight: <Ref[Tensor[Float32]], (1, 3, 3, 3), ref_key=10.weight>  :  has_default
+
+subgraph attr:
+subgraph instance: after_grad_33 : 0xf89b980
+# In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:595~597, 20~56/                    @jit/
+subgraph @after_grad_33() {
+  %0(CNode_44) = resolve(NameSpace[Entry: 'after_grad'], after_grad)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+  %1(CNode_45) = MakeTuple(%para1_args0, %para2_args1)
+      : (<Tensor[Float32], (256, 1, 28, 28)>, <Tensor[Float32], (256, 1, 28, 28)>) -> (<Tuple[Tensor[Float32]*2], TupleShape((256, 1, 28, 28), (256, 1, 28, 28))>)
+      #scope: (Default)
+
+#------------------------> 0
+  %2(CNode_46) = DoUnpackCall(%0, %1)
+      : (<Func, NoShape>, <Tuple[Tensor[Float32]*2], TupleShape((256, 1, 28, 28), (256, 1, 28, 28))>) -> (<null>)
+      #scope: (Default)
+  Return(%2) primitive_attrs: {abstract_adaptation_processed: Bool(1)}
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:597, 24~56/                        return grad_(fn, weights)(*args)/
+}
+# Order:
+#   1: @after_grad_33:CNode_44{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Entry: 'after_grad', [2]: ValueNode<Symbol> after_grad}
+#   2: @after_grad_33:CNode_46{[0]: ValueNode<Primitive> DoUnpackCall, [1]: CNode_44, [2]: CNode_45}
+#   3: @after_grad_33:CNode_47{[0]: ValueNode<Primitive> Return, [1]: CNode_46}
+
+
+subgraph attr:
+core: 1
+subgraph instance: UnpackCall_34 : 0x10086610
+
+subgraph @UnpackCall_34(%para0_Parameter_35, %para0_Parameter_36) {
+  %0(CNode_48) = TupleGetItem(%para0_Parameter_36, I64(0))
+      : (<Tuple[Tensor[Float32]*2], TupleShape((256, 1, 28, 28), (256, 1, 28, 28))>, <Int64, NoShape>) -> (<Tensor[Float32], (256, 1, 28, 28)>)
+      #scope: (Default)
+  %1(CNode_49) = TupleGetItem(%para0_Parameter_36, I64(1))
+      : (<Tuple[Tensor[Float32]*2], TupleShape((256, 1, 28, 28), (256, 1, 28, 28))>, <Int64, NoShape>) -> (<Tensor[Float32], (256, 1, 28, 28)>)
+      #scope: (Default)
+
+#------------------------> 1
+  %2(CNode_50) = Parameter_35(%0, %1)
+      : (<Tensor[Float32], (256, 1, 28, 28)>, <Tensor[Float32], (256, 1, 28, 28)>) -> (<null>)
+      #scope: (Default)
+  Return(%2) primitive_attrs: {abstract_adaptation_processed: Bool(1)}
+      : (<null>)
+      #scope: (Default)
+}
+# Order:
+#   1: @UnpackCall_34:CNode_50{[0]: param_Parameter_35, [1]: CNode_48, [2]: CNode_49}
+#   2: @UnpackCall_34:CNode_51{[0]: ValueNode<Primitive> Return, [1]: CNode_50}
+
+
+subgraph attr:
+subgraph instance: after_grad_37 : 0xf98c620
+# In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:595~597, 20~56/                    @jit/
+subgraph @after_grad_37(%para0_args0, %para0_args1) {
+  %0(CNode_52) = resolve(NameSpace[SymbolStr: 'Namespace:mindspore.ops.composite.base..<after_grad>'], grad_)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:597, 31~36/                        return grad_(fn, weights)(*args)/
+  %1(CNode_53) = resolve(NameSpace[SymbolStr: 'Namespace:mindspore.ops.composite.base..<after_grad>'], fn)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:597, 37~39/                        return grad_(fn, weights)(*args)/
+  %2(CNode_54) = resolve(NameSpace[SymbolStr: 'Namespace:mindspore.ops.composite.base..<after_grad>'], weights)
+      : (<External, NoShape>, <External, NoShape>) -> (<Tuple[Ref[Tensor[Float32]]*5], TupleShape((3, 1, 3, 3), (3, 3, 3, 3), (3, 3, 3, 3), (3, 3, 3, 3), (1, 3, 3, 3))>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:597, 41~48/                        return grad_(fn, weights)(*args)/
+  %3(CNode_55) = %0(%1, %2)
+      : (<Func, NoShape>, <Tuple[Ref[Tensor[Float32]]*5], TupleShape((3, 1, 3, 3), (3, 3, 3, 3), (3, 3, 3, 3), (3, 3, 3, 3), (1, 3, 3, 3))>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:597, 31~49/                        return grad_(fn, weights)(*args)/
+  %4(CNode_56) = MakeTuple(%para0_args0, %para0_args1)
+      : (<Tensor[Float32], (256, 1, 28, 28)>, <Tensor[Float32], (256, 1, 28, 28)>) -> (<Tuple[Tensor[Float32]*2], TupleShape((256, 1, 28, 28), (256, 1, 28, 28))>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:596, 36~40/                    def after_grad(*args):/
+
+#------------------------> 2
+  %5(CNode_57) = DoUnpackCall(%3, %4)
+      : (<Func, NoShape>, <Tuple[Tensor[Float32]*2], TupleShape((256, 1, 28, 28), (256, 1, 28, 28))>) -> (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:597, 31~56/                        return grad_(fn, weights)(*args)/
+  Return(%5) primitive_attrs: {abstract_adaptation_processed: Bool(1)}
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/base.py:597, 24~56/                        return grad_(fn, weights)(*args)/
+}
+# Order:
+#   1: @after_grad_37:CNode_52{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:mindspore.ops.composite.base..<after_grad>', [2]: ValueNode<Symbol> grad_}
+#   2: @after_grad_37:CNode_53{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:mindspore.ops.composite.base..<after_grad>', [2]: ValueNode<Symbol> fn}
+#   3: @after_grad_37:CNode_54{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:mindspore.ops.composite.base..<after_grad>', [2]: ValueNode<Symbol> weights}
+#   4: @after_grad_33:CNode_58{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   5: @after_grad_37:CNode_55{[0]: CNode_52, [1]: CNode_53, [2]: CNode_54}
+#   6: @after_grad_37:CNode_59{[0]: ValueNode<UnpackGraphPrimitive> UnpackGraph, [1]: CNode_53, [2]: CNode_56}
+#   7: @after_grad_37:CNode_57{[0]: ValueNode<Primitive> DoUnpackCall, [1]: CNode_55, [2]: CNode_56}
+#   8: @after_grad_37:CNode_60{[0]: ValueNode<Primitive> Return, [1]: CNode_57}
+
+
+subgraph attr:
+core: 1
+subgraph instance: UnpackCall_38 : 0x116f50b0
+
+subgraph @UnpackCall_38(%para0_Parameter_39, %para0_Parameter_40) {
+  %0(CNode_61) = TupleGetItem(%para0_Parameter_40, I64(0))
+      : (<Tuple[Tensor[Float32]*2], TupleShape((256, 1, 28, 28), (256, 1, 28, 28))>, <Int64, NoShape>) -> (<Tensor[Float32], (256, 1, 28, 28)>)
+      #scope: (Default)
+  %1(CNode_62) = TupleGetItem(%para0_Parameter_40, I64(1))
+      : (<Tuple[Tensor[Float32]*2], TupleShape((256, 1, 28, 28), (256, 1, 28, 28))>, <Int64, NoShape>) -> (<Tensor[Float32], (256, 1, 28, 28)>)
+      #scope: (Default)
+
+#------------------------> 3
+  %2(CNode_63) = Parameter_39(%0, %1)
+      : (<Tensor[Float32], (256, 1, 28, 28)>, <Tensor[Float32], (256, 1, 28, 28)>) -> (<null>)
+      #scope: (Default)
+  Return(%2) primitive_attrs: {abstract_adaptation_processed: Bool(1)}
+      : (<null>)
+      #scope: (Default)
+}
+# Order:
+#   1: @UnpackCall_38:CNode_63{[0]: param_Parameter_39, [1]: CNode_61, [2]: CNode_62}
+#   2: @UnpackCall_38:CNode_64{[0]: ValueNode<Primitive> Return, [1]: CNode_63}
+
+
+subgraph attr:
+k_graph: 1
+core: 1
+args_no_expand: 1
+subgraph instance: grad_forward_fn_41 : 0x116acc60
+# In file /root/taiadv/taiadv/detection_mindspore/magnet/defensive_models.py:47~50, 8~23/        def forward_fn(data_train, noisy_data):/
+subgraph @grad_forward_fn_41 parent: [subgraph @grad_forward_fn_65](%para0_grad_forward_fn, %para0_grad_forward_fn) {
+  %0(CNode_66) = J(%para_Parameter_67) primitive_attrs: {side_effect_propagate: I64(1)}
+      : (<Func, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+
+#------------------------> 4
+  %1(CNode_68) = %0(%para0_grad_forward_fn, %para0_grad_forward_fn)
+      : (<Tensor[Float32], (256, 1, 28, 28)>, <Tensor[Float32], (256, 1, 28, 28)>) -> (<null>)
+      #scope: (Default)
+  %2(CNode_69) = TupleGetItem(%1, I64(0))
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+  %3(CNode_70) = TupleGetItem(%1, I64(1))
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+  %4(CNode_71) = HyperMapPy_hyper_map[_ones_like_for_grad]{fn_leaf: MultitypeFuncGraph__ones_like_for_grad{(NoneType), (CSRTensor), (COOTensor), (Tensor), (Func), (Number), (TypeType)}}(%2)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+  %5(CNode_72) = %3(%4)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+  %6(CNode_73) = TupleGetItem(%5, I64(0))
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+  %7(CNode_74) = Partial(MultitypeFuncGraph_env_get{(EnvType, MapTensor), (EnvType, Tensor)}, %6) primitive_attrs: {side_effect_propagate: I64(1)}
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+  %8(CNode_75) = HyperMap_hyper_map(%7, $(@grad_forward_fn_65:para_Parameter_76))
+      : (<null>, <Tuple[Ref[Tensor[Float32]]*5], TupleShape((3, 1, 3, 3), (3, 3, 3, 3), (3, 3, 3, 3), (3, 3, 3, 3), (1, 3, 3, 3))>) -> (<null>)
+      #scope: (Default)
+  %9(CNode_77) = MakeTuple(%2, %8)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+  Return(%9) primitive_attrs: {abstract_adaptation_processed: Bool(1)}
+      : (<null>)
+      #scope: (Default)
+}
+# Order:
+#   1: @grad_forward_fn_41:CNode_68{[0]: CNode_66, [1]: param_grad_forward_fn, [2]: param_grad_forward_fn}
+#   2: @grad_forward_fn_41:CNode_69{[0]: ValueNode<Primitive> TupleGetItem, [1]: CNode_68, [2]: ValueNode<Int64Imm> 0}
+#   3: @grad_forward_fn_41:CNode_70{[0]: ValueNode<Primitive> TupleGetItem, [1]: CNode_68, [2]: ValueNode<Int64Imm> 1}
+#   4: @grad_forward_fn_41:CNode_71{[0]: ValueNode<HyperMapPy> MetaFuncGraph-hyper_map[_ones_like_for_grad].78, [1]: CNode_69}
+#   5: @grad_forward_fn_41:CNode_72{[0]: CNode_70, [1]: CNode_71}
+#   6: @grad_forward_fn_41:CNode_73{[0]: ValueNode<Primitive> TupleGetItem, [1]: CNode_72, [2]: ValueNode<Int64Imm> 0}
+#   7: @grad_forward_fn_41:CNode_74{[0]: ValueNode<Primitive> Partial, [1]: ValueNode<MultitypeFuncGraph> MetaFuncGraph-env_get.79, [2]: CNode_73}
+#   8: @grad_forward_fn_41:CNode_75{[0]: ValueNode<HyperMap> MetaFuncGraph-hyper_map.80, [1]: CNode_74, [2]: param_Parameter_76}
+#   9: @grad_forward_fn_41:CNode_77{[0]: ValueNode<Primitive> MakeTuple, [1]: CNode_69, [2]: CNode_75}
+#  10: @grad_forward_fn_41:CNode_81{[0]: ValueNode<Primitive> Return, [1]: CNode_77}
+
+
+subgraph attr:
+defer_inline: 1
+subgraph instance: forward_fn_29 : 0xf73dda0
+# In file /root/taiadv/taiadv/detection_mindspore/magnet/defensive_models.py:47~50, 8~23/        def forward_fn(data_train, noisy_data):/
+subgraph @forward_fn_29(%para0_data_train, %para0_noisy_data) {
+  %0(CNode_82) = resolve(NameSpace[SymbolStr: 'Namespace:magnet.defensive_models..<forward_fn>'], criterion)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/taiadv/taiadv/detection_mindspore/magnet/defensive_models.py:49, 19~28/            loss = criterion(output, data_train)/
+  %1(CNode_83) = resolve(NameSpace[SymbolStr: 'Namespace:magnet.defensive_models..<forward_fn>'], self)
+      : (<External, NoShape>, <External, NoShape>) -> (<External, NoShape>)
+      #scope: (Default)
+      # In file /root/taiadv/taiadv/detection_mindspore/magnet/defensive_models.py:48, 21~25/            output = self.model(noisy_data)/
+  %2(CNode_84) = getattr(%1, "model")
+      : (<External, NoShape>, <String, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/taiadv/taiadv/detection_mindspore/magnet/defensive_models.py:48, 21~31/            output = self.model(noisy_data)/
+  %3(output) = %2(%para0_noisy_data)
+      : (<Tensor[Float32], (256, 1, 28, 28)>) -> (<Tensor[Float32], (256, 1, 54, 54)>)
+      #scope: (Default)
+      # In file /root/taiadv/taiadv/detection_mindspore/magnet/defensive_models.py:48, 21~43/            output = self.model(noisy_data)/
+
+#------------------------> 5
+  %4(loss) = %0(%3, %para0_data_train)
+      : (<Tensor[Float32], (256, 1, 54, 54)>, <Tensor[Float32], (256, 1, 28, 28)>) -> (<null>)
+      #scope: (Default)
+      # In file /root/taiadv/taiadv/detection_mindspore/magnet/defensive_models.py:49, 19~48/            loss = criterion(output, data_train)/
+  Return(%4) primitive_attrs: {abstract_adaptation_processed: Bool(1)}
+      : (<null>)
+      #scope: (Default)
+      # In file /root/taiadv/taiadv/detection_mindspore/magnet/defensive_models.py:50, 12~23/            return loss/
+}
+# Order:
+#   1: @forward_fn_29:CNode_84{[0]: ValueNode<Primitive> getattr, [1]: CNode_83, [2]: ValueNode<StringImm> model}
+#   2: @forward_fn_29:CNode_85{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   4: @forward_fn_29:output{[0]: CNode_84, [1]: param_noisy_data}
+#   5: @forward_fn_29:CNode_82{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:magnet.defensive_models..<forward_fn>', [2]: ValueNode<Symbol> criterion}
+#   6: @forward_fn_29:CNode_86{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   8: @forward_fn_29:loss{[0]: CNode_82, [1]: output, [2]: param_data_train}
+#   9: @forward_fn_29:CNode_87{[0]: ValueNode<Primitive> Return, [1]: loss}
+#  10: @forward_fn_29:CNode_88{[0]: ValueNode<Primitive> MakeTuple, [1]: ValueNode<StringImm> __py_exec_index1_getattr__, [2]: ValueNode<StringImm> __py_exec_index2_getattr__}
+#  11: @forward_fn_29:CNode_89{[0]: ValueNode<Primitive> MakeTuple, [1]: CNode_83, [2]: ValueNode<StringImm> model}
+#  12: @forward_fn_29:CNode_90{[0]: ValueNode<Primitive> make_dict, [1]: CNode_88, [2]: CNode_89}
+
+
+subgraph attr:
+subgraph instance: mindspore_nn_loss_loss_MSELoss_construct_42 : 0xfd9af50
+# In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:389~393, 4~31/    def construct(self, logits, labels):/
+subgraph @mindspore_nn_loss_loss_MSELoss_construct_42(%para0_logits, %para0_labels) {
+  %0(CNode_91) = resolve(NameSpace[SymbolStr: 'Namespace:mindspore.nn.loss.loss'], _check_is_tensor)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:390, 8~24/        _check_is_tensor('logits', logits, self.cls_name)/
+  %1(CNode_92) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.loss.loss..<MSELoss::140694514805600>'], cls_name)
+      : (<External, NoShape>, <External, NoShape>) -> (<String, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:390, 43~56/        _check_is_tensor('logits', logits, self.cls_name)/
+  %2(CNode_93) = %0("logits", %para0_logits, %1)
+      : (<String, NoShape>, <Tensor[Float32], (256, 1, 54, 54)>, <String, NoShape>) -> (<None, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:390, 8~57/        _check_is_tensor('logits', logits, self.cls_name)/
+  %3(CNode_94) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.loss.loss..<MSELoss::140694514805600>'], cls_name)
+      : (<External, NoShape>, <External, NoShape>) -> (<String, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:391, 43~56/        _check_is_tensor('labels', labels, self.cls_name)/
+  %4(CNode_95) = %0("labels", %para0_labels, %3)
+      : (<String, NoShape>, <Tensor[Float32], (256, 1, 28, 28)>, <String, NoShape>) -> (<None, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:391, 8~57/        _check_is_tensor('labels', labels, self.cls_name)/
+  %5(CNode_96) = MakeTuple(%2, %4)
+      : (<None, NoShape>, <None, NoShape>) -> (<Tuple[None*2], TupleShape(NoShape, NoShape)>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:389~393, 4~31/    def construct(self, logits, labels):/
+  %6(CNode_97) = StopGradient(%5)
+      : (<Tuple[None*2], TupleShape(NoShape, NoShape)>) -> (<Tuple[None*2], TupleShape(NoShape, NoShape)>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:389~393, 4~31/    def construct(self, logits, labels):/
+  %7(CNode_98) = resolve(NameSpace[ClassMember: 'Namespace:mindspore.nn.loss.loss..<MSELoss::140694514805600>'], get_loss)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:393, 15~28/        return self.get_loss(x)/
+  %8(CNode_99) = resolve(NameSpace[SymbolStr: 'Namespace:mindspore.nn.loss.loss'], F)
+      : (<External, NoShape>, <External, NoShape>) -> (<External, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 12~13/        x = F.square(logits - labels)/
+  %9(CNode_100) = getattr(%8, "square")
+      : (<External, NoShape>, <String, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 12~20/        x = F.square(logits - labels)/
+  %10(CNode_101) = resolve(NameSpace[Ast: 'Namespace:mindspore._extends.parse.trope'], sub)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 21~36/        x = F.square(logits - labels)/
+
+#------------------------> 6
+  %11(CNode_102) = %10(%para0_logits, %para0_labels)
+      : (<Tensor[Float32], (256, 1, 54, 54)>, <Tensor[Float32], (256, 1, 28, 28)>) -> (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 21~36/        x = F.square(logits - labels)/
+  %12(x) = %9(%11)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 12~37/        x = F.square(logits - labels)/
+  %13(CNode_103) = %7(%12)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:393, 15~31/        return self.get_loss(x)/
+  %14(CNode_104) = Depend(%13, %6) primitive_attrs: {side_effect_propagate: I64(1)} cnode_attrs: {topo_sort_rhs_first: Bool(1)}
+      : (<null>, <Tuple[None*2], TupleShape(NoShape, NoShape)>) -> (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:393, 15~31/        return self.get_loss(x)/
+  Return(%14) primitive_attrs: {abstract_adaptation_processed: Bool(1)}
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:393, 8~31/        return self.get_loss(x)/
+}
+# Order:
+#   1: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_91{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:mindspore.nn.loss.loss', [2]: ValueNode<Symbol> _check_is_tensor}
+#   2: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_92{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.loss.loss..<MSELoss::140694514805600>', [2]: ValueNode<Symbol> cls_name}
+#   3: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_105{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   5: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_93{[0]: CNode_91, [1]: ValueNode<StringImm> logits, [2]: param_logits, [3]: CNode_92}
+#   6: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_94{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.loss.loss..<MSELoss::140694514805600>', [2]: ValueNode<Symbol> cls_name}
+#   7: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_106{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   9: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_95{[0]: CNode_91, [1]: ValueNode<StringImm> labels, [2]: param_labels, [3]: CNode_94}
+#  10: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_99{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:mindspore.nn.loss.loss', [2]: ValueNode<Symbol> F}
+#  11: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_100{[0]: ValueNode<Primitive> getattr, [1]: CNode_99, [2]: ValueNode<StringImm> square}
+#  12: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_101{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Ast: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> sub}
+#  13: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_102{[0]: CNode_101, [1]: param_logits, [2]: param_labels}
+#  14: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_107{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  16: @mindspore_nn_loss_loss_MSELoss_construct_42:x{[0]: CNode_100, [1]: CNode_102}
+#  17: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_98{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.loss.loss..<MSELoss::140694514805600>', [2]: ValueNode<Symbol> get_loss}
+#  18: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_108{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  20: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_103{[0]: CNode_98, [1]: x}
+#  22: @mindspore_nn_loss_loss_MSELoss_construct_42:CNode_109{[0]: ValueNode<Primitive> Return, [1]: CNode_104}
+
+
+subgraph attr:
+subgraph instance: _sub_tensor_43 : 0xdbe1630
+# In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/ops/composite/multitype_ops/sub_impl.py:39~42/@sub.register("Tensor", "Tensor")/
+subgraph @_sub_tensor_43(%para0_x, %para0_y) {
+  %0(CNode_110) = resolve(NameSpace[SymbolStr: 'Namespace:mindspore.ops.composite.multitype_ops.sub_impl'], F)
+      : (<External, NoShape>, <External, NoShape>) -> (<External, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 21~36/        x = F.square(logits - labels)/
+  %1(CNode_111) = getattr(%0, "tensor_sub")
+      : (<External, NoShape>, <String, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 21~36/        x = F.square(logits - labels)/
+
+#------------------------> 7
+  %2(CNode_112) = %1(%para0_x, %para0_y)
+      : (<Tensor[Float32], (256, 1, 54, 54)>, <Tensor[Float32], (256, 1, 28, 28)>) -> (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 21~36/        x = F.square(logits - labels)/
+  Return(%2) primitive_attrs: {abstract_adaptation_processed: Bool(1)}
+      : (<null>)
+      #scope: (Default)
+      # In file /root/miniconda3/envs/taiadv/lib/python3.10/site-packages/mindspore/nn/loss/loss.py:392, 21~36/        x = F.square(logits - labels)/
+}
+# Order:
+#   1: @_sub_tensor_43:CNode_110{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:mindspore.ops.composite.multitype_ops.sub_impl', [2]: ValueNode<Symbol> F}
+#   2: @_sub_tensor_43:CNode_111{[0]: ValueNode<Primitive> getattr, [1]: CNode_110, [2]: ValueNode<StringImm> tensor_sub}
+#   3: @_sub_tensor_113:CNode_114{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   4: @_sub_tensor_43:CNode_112{[0]: CNode_111, [1]: param_x, [2]: param_y}
+#   5: @_sub_tensor_43:CNode_115{[0]: ValueNode<Primitive> Return, [1]: CNode_112}
+
+
+# ===============================================================================================
+# The total of function graphs in evaluation stack: 8/13 (Ignored 5 internal frames).
+# ===============================================================================================
+
+
+# ===============================================================================================
+# The rest function graphs are the following:
+# ===============================================================================================
+No more function graphs.
+

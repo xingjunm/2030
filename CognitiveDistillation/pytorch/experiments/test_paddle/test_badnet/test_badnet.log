@@ -1,0 +1,300 @@
+2025-08-01 10:13:18,119 PaddlePaddle Version: 2.6.2
+2025-08-01 10:13:18,119 Python Version: 3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]
+2025-08-01 10:13:18,119 seed: 0
+2025-08-01 10:13:18,119 exp_name: test_badnet
+2025-08-01 10:13:18,119 exp_path: experiments/test_paddle
+2025-08-01 10:13:18,119 exp_config: configs/test_paddle
+2025-08-01 10:13:18,119 load_model: False
+2025-08-01 10:13:18,119 data_parallel: False
+2025-08-01 10:13:18,119 num_classes: 10
+2025-08-01 10:13:18,119 epochs: 2
+2025-08-01 10:13:18,119 grad_clip: -1
+2025-08-01 10:13:18,119 log_frequency: 50
+2025-08-01 10:13:18,119 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:13:18,119 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:13:18,119 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:13:18,119 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:13:18,119 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:14:43,431 PaddlePaddle Version: 2.6.2
+2025-08-01 10:14:43,431 Python Version: 3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]
+2025-08-01 10:14:43,431 seed: 0
+2025-08-01 10:14:43,431 exp_name: test_badnet
+2025-08-01 10:14:43,431 exp_path: experiments/test_paddle
+2025-08-01 10:14:43,431 exp_config: configs/test_paddle
+2025-08-01 10:14:43,431 load_model: False
+2025-08-01 10:14:43,431 data_parallel: False
+2025-08-01 10:14:43,431 num_classes: 10
+2025-08-01 10:14:43,431 epochs: 2
+2025-08-01 10:14:43,431 grad_clip: -1
+2025-08-01 10:14:43,431 log_frequency: 50
+2025-08-01 10:14:43,432 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:14:43,432 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:14:43,432 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:14:43,432 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:14:43,432 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:15:19,685 PaddlePaddle Version: 2.6.2
+2025-08-01 10:15:19,686 Python Version: 3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]
+2025-08-01 10:15:19,686 seed: 0
+2025-08-01 10:15:19,686 exp_name: test_badnet
+2025-08-01 10:15:19,686 exp_path: experiments/test_paddle
+2025-08-01 10:15:19,686 exp_config: configs/test_paddle
+2025-08-01 10:15:19,686 load_model: False
+2025-08-01 10:15:19,686 data_parallel: False
+2025-08-01 10:15:19,686 num_classes: 10
+2025-08-01 10:15:19,686 epochs: 2
+2025-08-01 10:15:19,686 grad_clip: -1
+2025-08-01 10:15:19,686 log_frequency: 50
+2025-08-01 10:15:19,686 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:15:19,686 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:15:19,686 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:15:19,686 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:15:19,686 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:16:15,545 PaddlePaddle Version: 2.6.2
+2025-08-01 10:16:15,545 Python Version: 3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]
+2025-08-01 10:16:15,545 seed: 0
+2025-08-01 10:16:15,545 exp_name: test_badnet
+2025-08-01 10:16:15,546 exp_path: experiments/test_paddle
+2025-08-01 10:16:15,546 exp_config: configs/test_paddle
+2025-08-01 10:16:15,546 load_model: False
+2025-08-01 10:16:15,546 data_parallel: False
+2025-08-01 10:16:15,546 num_classes: 10
+2025-08-01 10:16:15,546 epochs: 2
+2025-08-01 10:16:15,546 grad_clip: -1
+2025-08-01 10:16:15,546 log_frequency: 50
+2025-08-01 10:16:15,546 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:16:15,546 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:16:15,546 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:16:15,546 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:16:15,546 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:16:18,036 ====================Training Epoch 0====================
+2025-08-01 10:16:22,597 epoch=0 global_step=0 acc_avg=0.0900 loss_avg=3.0720 lr=0.1000 time=4.73it/s
+2025-08-01 10:16:23,324 epoch=0 global_step=50 acc_avg=0.1016 loss_avg=3.0000 lr=0.1000 time=71.15it/s
+2025-08-01 10:16:24,047 epoch=0 global_step=100 acc_avg=0.0989 loss_avg=3.0115 lr=0.1000 time=67.27it/s
+2025-08-01 10:16:24,763 epoch=0 global_step=150 acc_avg=0.0982 loss_avg=3.0116 lr=0.1000 time=70.97it/s
+2025-08-01 10:16:25,497 epoch=0 global_step=200 acc_avg=0.0984 loss_avg=3.0108 lr=0.1000 time=69.90it/s
+2025-08-01 10:16:26,224 epoch=0 global_step=250 acc_avg=0.0981 loss_avg=3.0148 lr=0.1000 time=68.99it/s
+2025-08-01 10:16:26,933 epoch=0 global_step=300 acc_avg=0.0990 loss_avg=3.0137 lr=0.1000 time=71.62it/s
+2025-08-01 10:16:27,652 epoch=0 global_step=350 acc_avg=0.0991 loss_avg=3.0139 lr=0.1000 time=69.17it/s
+2025-08-01 10:16:28,384 epoch=0 global_step=400 acc_avg=0.0987 loss_avg=3.0124 lr=0.1000 time=69.72it/s
+2025-08-01 10:16:29,111 epoch=0 global_step=450 acc_avg=0.0973 loss_avg=3.0165 lr=0.1000 time=69.50it/s
+2025-08-01 10:16:29,862 ====================Eval Epoch 0====================
+2025-08-01 10:17:57,009 PaddlePaddle Version: 2.6.2
+2025-08-01 10:17:57,009 Python Version: 3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]
+2025-08-01 10:17:57,009 seed: 0
+2025-08-01 10:17:57,009 exp_name: test_badnet
+2025-08-01 10:17:57,009 exp_path: experiments/test_paddle
+2025-08-01 10:17:57,009 exp_config: configs/test_paddle
+2025-08-01 10:17:57,009 load_model: False
+2025-08-01 10:17:57,009 data_parallel: False
+2025-08-01 10:17:57,009 num_classes: 10
+2025-08-01 10:17:57,009 epochs: 2
+2025-08-01 10:17:57,009 grad_clip: -1
+2025-08-01 10:17:57,009 log_frequency: 50
+2025-08-01 10:17:57,009 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:17:57,009 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:17:57,009 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:17:57,009 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:17:57,010 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:17:59,477 ====================Training Epoch 0====================
+2025-08-01 10:18:03,754 epoch=0 global_step=0 acc_avg=0.0900 loss_avg=3.0720 lr=0.1000 time=10.43it/s
+2025-08-01 10:18:04,452 epoch=0 global_step=50 acc_avg=0.1016 loss_avg=3.0000 lr=0.1000 time=68.43it/s
+2025-08-01 10:18:05,137 epoch=0 global_step=100 acc_avg=0.0989 loss_avg=3.0115 lr=0.1000 time=74.21it/s
+2025-08-01 10:18:05,823 epoch=0 global_step=150 acc_avg=0.0982 loss_avg=3.0116 lr=0.1000 time=73.97it/s
+2025-08-01 10:18:06,509 epoch=0 global_step=200 acc_avg=0.0984 loss_avg=3.0108 lr=0.1000 time=73.42it/s
+2025-08-01 10:18:07,197 epoch=0 global_step=250 acc_avg=0.0981 loss_avg=3.0148 lr=0.1000 time=74.39it/s
+2025-08-01 10:18:07,886 epoch=0 global_step=300 acc_avg=0.0990 loss_avg=3.0137 lr=0.1000 time=74.94it/s
+2025-08-01 10:18:08,561 epoch=0 global_step=350 acc_avg=0.0991 loss_avg=3.0139 lr=0.1000 time=73.94it/s
+2025-08-01 10:18:09,235 epoch=0 global_step=400 acc_avg=0.0987 loss_avg=3.0124 lr=0.1000 time=74.40it/s
+2025-08-01 10:18:09,915 epoch=0 global_step=450 acc_avg=0.0973 loss_avg=3.0165 lr=0.1000 time=74.56it/s
+2025-08-01 10:18:10,614 ====================Eval Epoch 0====================
+2025-08-01 10:18:11,247 [33mEval Loss: 3.0151 Eval Acc: 0.0983 Best Acc: 0.0983[0m
+2025-08-01 10:18:11,889 [33mModel Backdoor Attack success rate 0.0000[0m
+2025-08-01 10:18:12,091 model_state_dict saved at experiments/test_paddle/test_badnet/checkpoints/model_state_dict.pdparams
+2025-08-01 10:18:12,091 optimizer_state_dict saved at experiments/test_paddle/test_badnet/checkpoints/optimizer_state_dict.pdparams
+2025-08-01 10:18:12,093 scheduler_state_dict saved at experiments/test_paddle/test_badnet/checkpoints/scheduler_state_dict.pdparams
+2025-08-01 10:18:12,093 ====================Training Epoch 1====================
+2025-08-01 10:18:14,562 epoch=1 global_step=500 acc_avg=0.1900 loss_avg=2.7135 lr=0.1000 time=59.28it/s
+2025-08-01 10:18:15,239 epoch=1 global_step=550 acc_avg=0.1076 loss_avg=2.9963 lr=0.1000 time=74.64it/s
+2025-08-01 10:18:15,920 epoch=1 global_step=600 acc_avg=0.1039 loss_avg=3.0066 lr=0.1000 time=74.05it/s
+2025-08-01 10:18:16,605 epoch=1 global_step=650 acc_avg=0.1004 loss_avg=3.0128 lr=0.1000 time=73.31it/s
+2025-08-01 10:18:17,283 epoch=1 global_step=700 acc_avg=0.1000 loss_avg=3.0139 lr=0.1000 time=75.06it/s
+2025-08-01 10:18:17,957 epoch=1 global_step=750 acc_avg=0.0999 loss_avg=3.0144 lr=0.1000 time=74.75it/s
+2025-08-01 10:18:18,632 epoch=1 global_step=800 acc_avg=0.0999 loss_avg=3.0107 lr=0.1000 time=74.34it/s
+2025-08-01 10:18:19,307 epoch=1 global_step=850 acc_avg=0.0983 loss_avg=3.0146 lr=0.1000 time=74.95it/s
+2025-08-01 10:18:19,985 epoch=1 global_step=900 acc_avg=0.0977 loss_avg=3.0184 lr=0.1000 time=75.16it/s
+2025-08-01 10:18:20,659 epoch=1 global_step=950 acc_avg=0.0980 loss_avg=3.0140 lr=0.1000 time=74.23it/s
+2025-08-01 10:18:21,372 ====================Eval Epoch 1====================
+2025-08-01 10:18:22,036 [33mEval Loss: 3.0104 Eval Acc: 0.0982 Best Acc: 0.0983[0m
+2025-08-01 10:18:22,659 [33mModel Backdoor Attack success rate 0.0000[0m
+2025-08-01 10:18:22,956 model_state_dict saved at experiments/test_paddle/test_badnet/checkpoints/model_state_dict.pdparams
+2025-08-01 10:18:22,956 optimizer_state_dict saved at experiments/test_paddle/test_badnet/checkpoints/optimizer_state_dict.pdparams
+2025-08-01 10:18:22,957 scheduler_state_dict saved at experiments/test_paddle/test_badnet/checkpoints/scheduler_state_dict.pdparams
+2025-08-01 10:18:22,957 Running Cost 0.00 Days
+2025-08-01 10:18:48,491 PaddlePaddle Version: 2.6.2
+2025-08-01 10:18:48,491 GPU Available: gpu:0
+2025-08-01 10:18:48,491 seed: 0
+2025-08-01 10:18:48,491 exp_name: test_badnet
+2025-08-01 10:18:48,491 exp_path: experiments/test_paddle
+2025-08-01 10:18:48,491 exp_config: configs/test_paddle
+2025-08-01 10:18:48,491 data_parallel: False
+2025-08-01 10:18:48,491 method: CD
+2025-08-01 10:18:48,491 p: 1
+2025-08-01 10:18:48,491 gamma: 0.01
+2025-08-01 10:18:48,492 beta: 1.0
+2025-08-01 10:18:48,492 num_steps: 100
+2025-08-01 10:18:48,492 step_size: 0.1
+2025-08-01 10:18:48,492 mask_channel: 1
+2025-08-01 10:18:48,492 norm_only: False
+2025-08-01 10:18:48,492 num_classes: 10
+2025-08-01 10:18:48,492 epochs: 2
+2025-08-01 10:18:48,492 grad_clip: -1
+2025-08-01 10:18:48,492 log_frequency: 50
+2025-08-01 10:18:48,492 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:18:48,492 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:18:48,492 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:18:48,492 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:18:48,492 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:20:05,108 PaddlePaddle Version: 2.6.2
+2025-08-01 10:20:05,109 GPU Available: gpu:0
+2025-08-01 10:20:05,109 seed: 0
+2025-08-01 10:20:05,109 exp_name: test_badnet
+2025-08-01 10:20:05,109 exp_path: experiments/test_paddle
+2025-08-01 10:20:05,109 exp_config: configs/test_paddle
+2025-08-01 10:20:05,109 data_parallel: False
+2025-08-01 10:20:05,109 method: CD
+2025-08-01 10:20:05,109 p: 1
+2025-08-01 10:20:05,109 gamma: 0.01
+2025-08-01 10:20:05,109 beta: 1.0
+2025-08-01 10:20:05,109 num_steps: 100
+2025-08-01 10:20:05,109 step_size: 0.1
+2025-08-01 10:20:05,109 mask_channel: 1
+2025-08-01 10:20:05,109 norm_only: False
+2025-08-01 10:20:05,109 num_classes: 10
+2025-08-01 10:20:05,109 epochs: 2
+2025-08-01 10:20:05,109 grad_clip: -1
+2025-08-01 10:20:05,109 log_frequency: 50
+2025-08-01 10:20:05,109 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:20:05,109 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:20:05,110 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:20:05,110 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:20:05,110 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:20:36,318 PaddlePaddle Version: 2.6.2
+2025-08-01 10:20:36,318 GPU Available: gpu:0
+2025-08-01 10:20:36,318 seed: 0
+2025-08-01 10:20:36,318 exp_name: test_badnet
+2025-08-01 10:20:36,318 exp_path: experiments/test_paddle
+2025-08-01 10:20:36,318 exp_config: configs/test_paddle
+2025-08-01 10:20:36,318 data_parallel: False
+2025-08-01 10:20:36,318 method: CD
+2025-08-01 10:20:36,318 p: 1
+2025-08-01 10:20:36,318 gamma: 0.01
+2025-08-01 10:20:36,318 beta: 1.0
+2025-08-01 10:20:36,318 num_steps: 100
+2025-08-01 10:20:36,318 step_size: 0.1
+2025-08-01 10:20:36,318 mask_channel: 1
+2025-08-01 10:20:36,318 norm_only: False
+2025-08-01 10:20:36,318 num_classes: 10
+2025-08-01 10:20:36,318 epochs: 2
+2025-08-01 10:20:36,318 grad_clip: -1
+2025-08-01 10:20:36,319 log_frequency: 50
+2025-08-01 10:20:36,319 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:20:36,319 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:20:36,319 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:20:36,319 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:20:36,319 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:20:55,591 PaddlePaddle Version: 2.6.2
+2025-08-01 10:20:55,591 GPU Available: gpu:0
+2025-08-01 10:20:55,591 seed: 0
+2025-08-01 10:20:55,591 exp_name: test_badnet
+2025-08-01 10:20:55,592 exp_path: experiments/test_paddle
+2025-08-01 10:20:55,592 exp_config: configs/test_paddle
+2025-08-01 10:20:55,592 data_parallel: False
+2025-08-01 10:20:55,592 method: CD
+2025-08-01 10:20:55,592 p: 1
+2025-08-01 10:20:55,592 gamma: 0.01
+2025-08-01 10:20:55,592 beta: 1.0
+2025-08-01 10:20:55,592 num_steps: 100
+2025-08-01 10:20:55,592 step_size: 0.1
+2025-08-01 10:20:55,592 mask_channel: 1
+2025-08-01 10:20:55,592 norm_only: False
+2025-08-01 10:20:55,592 num_classes: 10
+2025-08-01 10:20:55,592 epochs: 2
+2025-08-01 10:20:55,592 grad_clip: -1
+2025-08-01 10:20:55,592 log_frequency: 50
+2025-08-01 10:20:55,592 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:20:55,592 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:20:55,592 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:20:55,592 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:20:55,592 dataset: {'name': 'DatasetGenerator', 'train_bs': 100, 'eval_bs': 100, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:27:40,603 PaddlePaddle Version: 2.6.2
+2025-08-01 10:27:40,603 GPU Available: gpu:0
+2025-08-01 10:27:40,603 seed: 0
+2025-08-01 10:27:40,603 exp_name: test_badnet
+2025-08-01 10:27:40,603 exp_path: experiments/test_paddle
+2025-08-01 10:27:40,603 exp_config: configs/test_paddle
+2025-08-01 10:27:40,603 data_parallel: False
+2025-08-01 10:27:40,603 method: CD
+2025-08-01 10:27:40,603 p: 1
+2025-08-01 10:27:40,603 gamma: 0.01
+2025-08-01 10:27:40,603 beta: 1.0
+2025-08-01 10:27:40,603 num_steps: 2
+2025-08-01 10:27:40,603 step_size: 0.1
+2025-08-01 10:27:40,604 mask_channel: 1
+2025-08-01 10:27:40,604 norm_only: False
+2025-08-01 10:27:40,604 num_classes: 10
+2025-08-01 10:27:40,604 epochs: 2
+2025-08-01 10:27:40,604 grad_clip: -1
+2025-08-01 10:27:40,604 log_frequency: 50
+2025-08-01 10:27:40,604 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:27:40,604 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:27:40,604 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:27:40,604 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:27:40,604 dataset: {'name': 'DatasetGenerator', 'train_bs': 10, 'eval_bs': 10, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:30:40,223 PaddlePaddle Version: 2.6.2
+2025-08-01 10:30:40,223 GPU Available: gpu:0
+2025-08-01 10:30:40,223 seed: 0
+2025-08-01 10:30:40,223 exp_name: test_badnet
+2025-08-01 10:30:40,223 exp_path: experiments/test_paddle
+2025-08-01 10:30:40,223 exp_config: configs/test_paddle
+2025-08-01 10:30:40,223 data_parallel: False
+2025-08-01 10:30:40,223 method: STRIP
+2025-08-01 10:30:40,224 p: 1
+2025-08-01 10:30:40,224 gamma: 0.01
+2025-08-01 10:30:40,224 beta: 1.0
+2025-08-01 10:30:40,224 num_steps: 100
+2025-08-01 10:30:40,224 step_size: 0.1
+2025-08-01 10:30:40,224 mask_channel: 1
+2025-08-01 10:30:40,224 norm_only: False
+2025-08-01 10:30:40,224 num_classes: 10
+2025-08-01 10:30:40,224 epochs: 2
+2025-08-01 10:30:40,224 grad_clip: -1
+2025-08-01 10:30:40,224 log_frequency: 50
+2025-08-01 10:30:40,224 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:30:40,224 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:30:40,224 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:30:40,224 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:30:40,224 dataset: {'name': 'DatasetGenerator', 'train_bs': 10, 'eval_bs': 10, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
+2025-08-01 10:32:39,716 PaddlePaddle Version: 2.6.2
+2025-08-01 10:32:39,716 GPU Available: gpu:0
+2025-08-01 10:32:39,717 seed: 0
+2025-08-01 10:32:39,717 exp_name: test_badnet
+2025-08-01 10:32:39,717 exp_path: experiments/test_paddle
+2025-08-01 10:32:39,717 exp_config: configs/test_paddle
+2025-08-01 10:32:39,717 data_parallel: False
+2025-08-01 10:32:39,717 method: STRIP
+2025-08-01 10:32:39,717 p: 1
+2025-08-01 10:32:39,717 gamma: 0.01
+2025-08-01 10:32:39,717 beta: 1.0
+2025-08-01 10:32:39,717 num_steps: 100
+2025-08-01 10:32:39,717 step_size: 0.1
+2025-08-01 10:32:39,717 mask_channel: 1
+2025-08-01 10:32:39,717 norm_only: False
+2025-08-01 10:32:39,717 num_classes: 10
+2025-08-01 10:32:39,717 epochs: 2
+2025-08-01 10:32:39,717 grad_clip: -1
+2025-08-01 10:32:39,717 log_frequency: 50
+2025-08-01 10:32:39,717 criterion: {'name': 'CrossEntropyLoss'}
+2025-08-01 10:32:39,717 model: {'name': 'ResNet18', 'num_classes': 10}
+2025-08-01 10:32:39,717 optimizer: {'name': 'SGD', 'lr': 0.1, 'weight_decay': 0.0005, 'momentum': 0.9}
+2025-08-01 10:32:39,717 scheduler: {'name': 'MultiStepLR', 'milestones': [45, 60], 'gamma': 0.1}
+2025-08-01 10:32:39,718 dataset: {'name': 'DatasetGenerator', 'train_bs': 10, 'eval_bs': 10, 'n_workers': 4, 'train_d_type': 'BadNetCIFAR10', 'test_d_type': 'CIFAR10', 'train_tf_op': 'NoAug', 'test_tf_op': 'NoAug', 'poison_rate': 0.01, 'poison_test_d_type': 'BadNetCIFAR10', 'train_path': './paddlepaddle/data/', 'test_path': './paddlepaddle/data/'}
