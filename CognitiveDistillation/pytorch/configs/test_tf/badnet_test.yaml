@@ -1,0 +1,10 @@
+batch_size: 128
+dataset: cifar_badnet
+epochs: 5
+lr: 0.1
+model: resnet18
+momentum: 0.9
+poison_rate: 0.01
+seed: 42
+target_label: 0
+weight_decay: 0.0001

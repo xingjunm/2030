@@ -1,0 +1,7 @@
+
+dataset:
+    train_d_type: 'CIFAR10'
+    name: 'cifar_badnet'
+model:
+    name: 'resnet18'
+epochs: 10

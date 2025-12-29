@@ -1,0 +1,14 @@
+# PaddlePaddle framework requirements
+paddlepaddle>=2.5.0
+numpy>=1.19.0
+
+# For dataset loading (kept from original as per paddlepaddle-note.md #6)
+torchvision>=0.13.0
+torch>=1.12.0  # Required by torchvision
+
+# Other dependencies from original project
+mlconfig>=0.0.4
+Pillow>=9.0.0
+scipy>=1.7.0
+tqdm>=4.62.0
+matplotlib>=3.3.0

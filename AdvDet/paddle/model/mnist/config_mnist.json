@@ -1,0 +1,1 @@
+{"input_shape": [1, 28, 28], "nb_classes": 10, "clip_values": [0, 1], "dataset": "mnist"}

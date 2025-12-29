@@ -1,0 +1,15 @@
+2025-08-03 09:00:21,764 MindSpore Version: 2.6.0
+2025-08-03 09:00:21,764 Device: CPU
+2025-08-03 09:00:21,764 exp_name: test_cd
+2025-08-03 09:00:21,764 exp_path: test_exp
+2025-08-03 09:00:21,764 exp_config: test_configs
+2025-08-03 09:00:21,764 data_parallel: False
+2025-08-03 09:00:21,764 method: CD
+2025-08-03 09:00:21,764 logits_train_mask_filename: cd_train_mask_p=1_c=1_gamma=0.010000_beta=1.000000_steps=100_step_size=0.100000.npy
+2025-08-03 09:00:21,764 logits_test_mask_filename: cd_bd_test_mask_p=1_c=1_gamma=0.010000_beta=1.000000_steps=100_step_size=0.100000.npy
+2025-08-03 09:00:21,764 fe_train_mask_filename: cd_fe_train_mask_p=1_c=1_gamma=0.001000_beta=10.000000_steps=100_step_size=0.050000.npy
+2025-08-03 09:00:21,764 fe_test_mask_filename: cd_fe_bd_test_mask_p=1_c=1_gamma=0.001000_beta=10.000000_steps=100_step_size=0.050000.npy
+2025-08-03 09:00:21,764 norm_only: False
+2025-08-03 09:00:21,764 dataset: {'train_d_type': 'CIFAR10', 'name': 'cifar_badnet'}
+2025-08-03 09:00:21,764 model: {'name': 'resnet18'}
+2025-08-03 09:00:21,764 epochs: 10

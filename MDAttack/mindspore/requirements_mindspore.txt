@@ -1,0 +1,15 @@
+# MindSpore Framework Requirements
+mindspore>=2.0.0
+numpy>=1.19.5
+pillow>=8.0.0
+
+# PyTorch dependencies for loading pre-trained models and datasets
+torch>=1.7.0
+torchvision>=0.8.0
+
+# Configuration and utilities
+mlconfig>=0.0.4
+
+# Optional dependencies for visualization and debugging
+matplotlib>=3.3.0
+tensorboard>=2.4.0
